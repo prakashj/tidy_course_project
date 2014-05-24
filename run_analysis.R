@@ -24,7 +24,7 @@ readdata <- function(p_file_name,p_dir_name){
 }
 
 
-main <- function(){
+main <- function(output_file){
 #read test
 testdata <- readdata("test","test")
 #read train
@@ -51,5 +51,5 @@ v_measure <- setdiff(colnames(data),v_id)
 mdata <-melt(data,id=v_id,measure=v_measure)
 #recast mean values
 finaldata <- dcast(mdata, ActivityName + SubjectID ~ variable, mean)
-write.table(finaldata,file="tidy.txt",row.names=F)
+write.table(finaldata,file=output_file,row.names=F)
 }
